@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Crime Report</title>
+</head>
+<body>
+<h1>Create Crime Report</h1>
+
+<form th:action="@{/reports}" th:object="${report}" method="post">
+    <label>Reporter:</label>
+    <input type="text" th:field="*{reporter}">
+    <br><br>
+
+    <label>Description:</label>
+    <textarea th:field="*{description}" required></textarea>
+    <br><br>
+
+    <label>Time:</label>
+    <input type="datetime-local" th:field="*{time}">
+    <br><br>
+
+    <label>Place:</label>
+    <input type="text" th:field="*{place}" required>
+    <br><br>
+
+    <button type="submit">Submit Report</button>
+</form>
+
+<a th:href="@{/reports}">Back</a>
+</body>
+</html>

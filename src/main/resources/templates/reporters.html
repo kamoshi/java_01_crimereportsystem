@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reporters</title>
+</head>
+<body>
+<h1>Reporters</h1>
+
+<a th:href="@{/reporters/new}">Add Reporter</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Login</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="reporter : ${reporters}">
+        <td th:text="${reporter.id}"></td>
+        <td th:text="${reporter.name}"></td>
+        <td th:text="${reporter.phoneNumber}"></td>
+        <td th:text="${reporter.address}"></td>
+        <td th:text="${reporter.login}"></td>
+        <td>
+            <a th:href="@{/reporters/edit/{id}(id=${reporter.id})}">Edit</a>
+            <form th:action="@{/reporters/{id}(id=${reporter.id})}"
+                  method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

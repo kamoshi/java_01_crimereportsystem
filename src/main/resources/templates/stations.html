@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Police Stations</title>
+</head>
+<body>
+<h1>Police Stations</h1>
+
+<a th:href="@{/stations/new}">Add Station</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="station : ${stations}">
+        <td th:text="${station.id}"></td>
+        <td th:text="${station.address}"></td>
+        <td th:text="${station.phoneNumber}"></td>
+        <td>
+            <a th:href="@{/stations/edit/{id}(id=${station.id})}">Edit</a>
+            <form th:action="@{/stations/{id}(id=${station.id})}"
+                  method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

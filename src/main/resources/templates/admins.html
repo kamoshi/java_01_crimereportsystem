@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admins</title>
+</head>
+<body>
+<h1>Administrators</h1>
+
+<a th:href="@{/admins/new}">Add Admin</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Login</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="admin : ${admins}">
+        <td th:text="${admin.id}"></td>
+        <td th:text="${admin.name}"></td>
+        <td th:text="${admin.phoneNumber}"></td>
+        <td th:text="${admin.address}"></td>
+        <td th:text="${admin.login}"></td>
+        <td>
+            <a th:href="@{/admins/edit/{id}(id=${admin.id})}">Edit</a>
+            <form th:action="@{/admins/{id}(id=${admin.id})}"
+                  method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

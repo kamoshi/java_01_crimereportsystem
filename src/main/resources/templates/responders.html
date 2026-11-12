@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Responders</title>
+</head>
+<body>
+<h1>Responders</h1>
+
+<a th:href="@{/responders/new}">Add Responder</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Station ID</th>
+        <th>Current Place</th>
+        <th>Current Job</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="responder : ${responders}">
+        <td th:text="${responder.id}"></td>
+        <td th:text="${responder.name}"></td>
+        <td th:text="${responder.phoneNumber}"></td>
+        <td th:text="${responder.address}"></td>
+        <td th:text="${responder.station}"></td>
+        <td th:text="${responder.currentPlace}"></td>
+        <td th:text="${responder.currentJob}"></td>
+        <td>
+            <a th:href="@{/responders/edit/{id}(id=${responder.id})}">Edit</a>
+            <form th:action="@{/responders/{id}(id=${responder.id})}"
+                  method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

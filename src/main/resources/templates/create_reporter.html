@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Reporter</title>
+</head>
+<body>
+<h1>Create Reporter</h1>
+
+<form th:action="@{/reporters}" th:object="${reporter}" method="post">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required>
+    <br><br>
+
+    <label>Phone:</label>
+    <input type="text" th:field="*{phoneNumber}">
+    <br><br>
+
+    <label>Address:</label>
+    <input type="text" th:field="*{address}">
+    <br><br>
+
+    <label>Login:</label>
+    <input type="text" th:field="*{login}" required>
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" th:field="*{password}" required>
+    <br><br>
+
+    <button type="submit">Save Reporter</button>
+</form>
+
+<a th:href="@{/reporters}">Back</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Responder</title>
+</head>
+<body>
+<h1>Edit Responder</h1>
+
+<form th:action="@{/responders/edit/{id}(id=${responder.id})}"
+      th:object="${responder}" method="post">
+
+    <label>Station ID:</label>
+    <input type="number" th:field="*{station}">
+    <br><br>
+
+    <label>Current Place:</label>
+    <input type="text" th:field="*{currentPlace}">
+    <br><br>
+
+    <label>Current Job ID:</label>
+    <input type="number" th:field="*{currentJob}">
+    <br><br>
+
+    <button type="submit">Update Responder</button>
+</form>
+
+<a th:href="@{/responders}">Back</a>
+</body>
+</html>
